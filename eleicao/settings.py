@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gestao.apps.GestaoConfig',
     'widget_tweaks',
+    'localflavor',
 ]
 
 MIDDLEWARE = [
