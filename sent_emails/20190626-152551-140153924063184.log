@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: muller2oliveira@gmail.com
+Date: Wed, 26 Jun 2019 15:25:51 -0000
+Message-ID: <156156275190.17903.4469862468437437090@Linux>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MQ/57i-93cceec023ed4bd9db0f/
+
+Your username, in case you've forgotten: muller
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
