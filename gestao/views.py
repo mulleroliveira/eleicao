@@ -8,7 +8,7 @@ def register(request):
             form.save()
             return redirect('/accounts/login/')
         else:
-            pass
+            return render(request, 'registration/register.html', {"form":form})
     else:
         form = UserCreationForm()
         return render(request, 'registration/register.html', {"form":form})
