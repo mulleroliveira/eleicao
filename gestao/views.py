@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from . forms import login
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == "POST":
