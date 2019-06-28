@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . forms import ExtendsUserCreationForm, UserProfileForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 def register(request):
     if request.method == "POST":
@@ -12,6 +13,7 @@ def register(request):
             profile = form2.save(commit=False)
             profile.user = user
             profile.save()
+            messages.success(request, "Conta criada com sucesso!")
             return redirect('/accounts/login/')
         else:
             return render(request, 'registration/register.html', {"form":form, "form2":form2})
