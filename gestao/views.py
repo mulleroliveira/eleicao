@@ -13,7 +13,7 @@ def register(request):
             profile = form2.save(commit=False)
             profile.user = user
             profile.save()
-            messages.success(request, "Conta criada com sucesso!")
+            messages.success(request, "A sua conta foi criada com sucesso.")
             return redirect('/accounts/login/')
         else:
             return render(request, 'registration/register.html', {"form":form, "form2":form2})
