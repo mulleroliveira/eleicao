@@ -35,5 +35,5 @@ def home(request):
 def perfil(request):
     id = request.user.id
     usuario = User.objects.all().get(id=id)
-    usuariocpf = UserProfile.objects.all()
+    usuariocpf = UserProfile.objects.all().get()
     return render(request, 'usuario/perfil.html', {"usuario":usuario, "usuariocpf":usuariocpf})
