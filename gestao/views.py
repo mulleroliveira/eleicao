@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . forms import ExtendsUserCreationForm, UserProfileForm
+from . models import UserProfile
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -26,12 +27,13 @@ def register(request):
 
 #@login_required
 #@gestao.add_book('')
+@login_required
 def home(request):
-    if request.user.is_authenticated:
-        return render(request, 'home/home.html')
-    else:
-        return redirect("/accounts/login/")
+    return render(request, 'home/home.html')
 
-
+@login_required
 def perfil(request):
-    return render(request, 'usuario/perfil.html')
+    id = request.user.id
+    usuario = User.objects.all().get(id=id)
+    usuariocpf = UserProfile.objects.all()
+    return render(request, 'usuario/perfil.html', {"usuario":usuario, "usuariocpf":usuariocpf})
