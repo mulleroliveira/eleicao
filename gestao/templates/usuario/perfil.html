@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row panel panel-primary">
+    <div class="col-md-4">
+        <img class="detail-perfil rounded"
+            src="https://cdn.img.com/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=42" alt="">
+    </div>
+    <div class="col-md-8">
+        <h3 id="title-perfil" class="panel panel-primary">Perfil</h3>
+        <hr>
+        <form>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput">Nome</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput2">Sobrenome</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput">Email</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput2">CPF </label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

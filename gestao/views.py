@@ -31,3 +31,7 @@ def home(request):
         return render(request, 'home/home.html')
     else:
         return redirect("/accounts/login/")
+
+
+def perfil(request):
+    return render(request, 'usuario/perfil.html')
