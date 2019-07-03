@@ -3,6 +3,8 @@ from . forms import ExtendsUserCreationForm, UserProfileForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
+
 
 def register(request):
     if request.method == "POST":
@@ -22,6 +24,8 @@ def register(request):
         form2 = UserProfileForm()
         return render(request, 'registration/register.html', {"form":form, "form2":form2})
 
+#@login_required
+#@gestao.add_book('')
 def home(request):
     if request.user.is_authenticated:
         return render(request, 'home/home.html')
