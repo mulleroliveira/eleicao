@@ -33,7 +33,10 @@ def home(request):
 
 @login_required
 def perfil(request):
-    id = request.user.id
-    usuario = User.objects.all().get(pk=id)
-    usuariocpf = UserProfile.objects.all().get()
-    return render(request, 'usuario/perfil.html', {"usuario":usuario, "usuariocpf":usuariocpf})
+    if not request.user.username == "muller":
+        id = request.user.id
+        usuario = User.objects.all().get(pk=id)
+        usuariocpf = UserProfile.objects.all().get(user=usuario)
+        return render(request, 'usuario/perfil.html', {"usuario":usuario, "usuariocpf":usuariocpf})
+    else:
+        return redirect('/gestao/')

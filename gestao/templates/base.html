@@ -14,8 +14,8 @@
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/web.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/web.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 
   <!-- Custom styles for this template-->
@@ -202,14 +202,17 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{request.user.username}}</span>
-                <img class="img-profile rounded-circle" src="https://nrm.co.nz/wp-content/uploads/2017/08/facebook-avatar.jpg">
+                <img class="img-profile rounded-circle"
+                  src="https://nrm.co.nz/wp-content/uploads/2017/08/facebook-avatar.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                {% if not request.user.username == "muller" %}
                 <a class="dropdown-item" href="/gestao/perfil/">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
+                {% endif %}
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Configurações
