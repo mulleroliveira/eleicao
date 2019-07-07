@@ -1,47 +1,97 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load widget_tweaks %}
+
 <div class="row">
     <div class="col-md-4 col-sm-6 mb-3 mb-sm-0">
-        <img class="detail-perfil rounded border-bottom-primary"
-            src="https://cdn.img.com/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=42">
-        <div class="dropdown">
-            <a class="dropdown-toggle" href="" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="fa fa-camera" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Tirar Foto</button>
-                <button class="dropdown-item" type="button">Enviar Foto</button>
-                <button class="dropdown-item" type="button">Enviar URL</button>
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h5 class="m-0 font-weight-bold text-primary">Perfil</h5>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    aria-labelledby="dropdownMenuLink" x-placement="bottom-end"
+                    style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(17px, 19px, 0px);">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="chart-pie pt-4 pb-2">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <canvas id="myPieChart" width="543" height="624" class="chartjs-render-monitor"
+                    style="display: block; height: 208px; width: 181px;"></canvas>
             </div>
         </div>
     </div>
     <div class="col-md-8 col-sm-6 mb-3 mb-sm-0">
-        <h3 id="title-perfil">Perfil</h3>
-        <hr class="border-bottom-primary">
-        <form>
+        <hr id="linha-nome-dados">
+        <form action="/gestao/perfil/" method="POST">
+            {% csrf_token %}
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="formGroupExampleInput">Nome</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" value="{{usuario.username}}">
+                    <label for="formGroupExampleInput">Username</label>
+                    {{form.username | attr:"class:form-control form-control-user" | attr:"placeholder:Username"}}
+                    {% for c in form.username.errors %}
+                    {{c}}
+                    {% endfor %}
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="formGroupExampleInput2">Sobrenome</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" value="{{usuario.last_name}}">
+                    <label for="formGroupExampleInput2">Nome</label>
+                    {{form.first_name | attr:"class:form-control form-control-user" | attr:"placeholder:Primeiro Nome"}}
+                    {% for c in form.first_name.errors %}
+                    {{c}}
+                    {% endfor %}
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="formGroupExampleInput">Email</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" value="{{usuario.email}}">
+                    <label for="formGroupExampleInput2">Email</label>
+                    {{form.email | attr:"class:form-control form-control-user" | attr:"placeholder:Email"}}
+                    {% for c in form.email.errors %}
+                    {{c}}
+                    {% endfor %}
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label for="formGroupExampleInput2">CPF</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" value="{{usuariocpf.cpf}}">
+                    <label for="formGroupExampleInput">Sobrenome</label>
+                    {{form.last_name | attr:"class:form-control form-control-user" | attr:"placeholder:Segundo Nome"}}
+                    {% for c in form.last_name.errors %}
+                    {{c}}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput2">Senha</label>
+                    {{form.password1 | attr:"class:form-control form-control-user" | attr:"placeholder:Nova senha"}}
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="formGroupExampleInput">Confirmar Senha</label>
+                    {{form.password2 | attr:"class:form-control form-control-user" | attr:"placeholder:Confirmar nova senha"}}
+                    {% for c in form.password2.errors %}
+                    {{c}}
+                    {% endfor %}
                 </div>
             </div>
             <button class="perfil-salvar btn btn-primary" type="submit">Salvar</button>
         </form>
+    </div>
+    <div class="col-md-12 col-sm-6 mb-3 mb-sm-0">
+        <h6 id="aviso-perfil">Caso não queira mudar a senha, informa a mesma já cadastrada para concluir a(s)
+            mudança(s).</h6>
     </div>
 </div>
 {% endblock %}

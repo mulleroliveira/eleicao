@@ -6,11 +6,14 @@
 
 }
 
-.detail-perfil {
-    width: 340px;
-    height: 220px;
-}
-
 .perfil-salvar {
     float: right;
+}
+
+#aviso-perfil {
+    text-align: center;
+}
+
+#linha-nome-dados {
+    margin-top: 56px;
 }

@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home),
-    path('perfil/', views.perfil),
+    path('perfil/', views.perfil, name="perfil"),
 ]

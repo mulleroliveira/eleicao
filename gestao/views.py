@@ -19,7 +19,7 @@ def register(request):
             messages.success(request, "A sua conta foi criada com sucesso.")
             return redirect('/accounts/login/')
         else:
-            return render(request, 'registration/register.html', {"form":form, "form2":form2})
+            return render(request, 'registration/register.html', {"form":form,"form2":form2})
     else:
         form = ExtendsUserCreationForm()
         form2 = UserProfileForm()
@@ -33,10 +33,17 @@ def home(request):
 
 @login_required
 def perfil(request):
-    if not request.user.username == "muller":
+    if request.method == "POST":
         id = request.user.id
-        usuario = User.objects.all().get(pk=id)
-        usuariocpf = UserProfile.objects.all().get(user=usuario)
-        return render(request, 'usuario/perfil.html', {"usuario":usuario, "usuariocpf":usuariocpf})
+        usuario = User.objects.get(pk=id)
+        form = ExtendsUserCreationForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect("/gestao/")
+        else:
+            return render(request, "usuario/perfil.html", {"form":form})
     else:
-        return redirect('/gestao/')
+        id = request.user.id
+        usuario = User.objects.get(pk=id)
+        form = ExtendsUserCreationForm(instance=usuario)
+        return render(request, 'usuario/perfil.html', {"form":form})
